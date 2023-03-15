@@ -19,8 +19,8 @@ name: slide4
 
 #### Code
 <font size= 4>
-```...
-            "Effect": "Allow",
+
+```         "Effect": "Allow",
             "Principal": {
                 "Federated": "OIDC_PROVIDER_ARN"
             },
@@ -29,7 +29,6 @@ name: slide4
                 "StringEquals": {
                     "SITE_ADDRESS:aud": "AUDIENCE_VALUE",
                     "SITE_ADDRESS:sub": "organization:ORG_NAME:project:PROJECT_NAME:workspace:WORKSPACE_NAME:run_phase:RUN_PHASE"
-                    ...
 ```
 
 ???
