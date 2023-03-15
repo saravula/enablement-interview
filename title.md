@@ -12,5 +12,3 @@ paginate: true
 
 <!-- Presenter notes go here -->
 
-
----

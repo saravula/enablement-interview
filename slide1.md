@@ -4,6 +4,7 @@ background-image: url(../../assets/images/backgrounds/HashiCorp-Content-bkg.png)
 background-size: cover
 name: slide1
 
+---
 ### How Dynamic Credentials Work
 
 ##### The following process occurs for each Terraform plan and apply:
@@ -23,6 +24,7 @@ name: slide1
 
 7. When the plan or apply completes, the run environment and temporary credentials is torn down.
 
+???
 
 <!-- You configure a trust relationship between your cloud platform and Terraform Cloud. As part of that process, you can define rules that let Terraform Cloud workspaces and runs access specific resources. 
 1. Terraform Cloud generates a [workload identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token is compliant with OIDC standards and includes information about the organization, workspace, and run stage.

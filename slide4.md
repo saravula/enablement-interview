@@ -10,7 +10,11 @@ name: slide4
 You’ll need to set some environment variables in your Terraform Cloud workspace in order to configure Terraform Cloud to authenticate with AWS using dynamic credentials. You can set these as workspace variables, or if you’d like to share one AWS role across multiple workspaces, you can use a variable set.
 
 #### Required Environment Variables
-<font size= 4>
+<style scoped>
+    table{
+        font-size: 10px;
+    }
+</style> 
 
 | Variable | Value | Notes |
 | -------- | ----- | ----- |
@@ -19,7 +23,7 @@ You’ll need to set some environment variables in your Terraform Cloud workspac
 
 
 #### Optional Environment Variables
-<font size= 4>
+
 You may need to set these variables, depending on your use case.
 
 | Variable | Value | Notes |
@@ -28,6 +32,7 @@ You may need to set these variables, depending on your use case.
 | TFC_AWS_PLAN_ROLE_ARN | The AWS role arn to use for the plan phase of a run. | Will fall back to the value of TFC_AWS_RUN_ROLE_ARN if not provided. |
 | TFC_AWS_APPLY_ROLE_ARN | The AWS role arn to use for the apply phase of a run. | Will fall back to the value of TFC_AWS_RUN_ROLE_ARN if not provided |
 
+???
 <!--
 ### Configure the AWS Provider
 < font size= 4>
