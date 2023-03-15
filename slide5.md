@@ -4,19 +4,40 @@ background-image: url(../../assets/images/backgrounds/HashiCorp-Content-bkg.png)
 background-size: cover
 name: slide5
 
+### Configure Terraform Cloud
+<font size= 4>
+
+You’ll need to set some environment variables in your Terraform Cloud workspace in order to configure Terraform Cloud to authenticate with AWS using dynamic credentials. You can set these as workspace variables, or if you’d like to share one AWS role across multiple workspaces, you can use a variable set.
+
+#### Required Environment Variables
+<style scoped>
+    table{
+        font-size: 10px;
+    }
+</style> 
+
+| Variable | Value | Notes |
+| -------- | ----- | ----- |
+| TFC_AWS_PROVIDER_AUTH1 | true | Must be present and set to true, or Terraform Cloud will not attempt to authenticate to AWS. |
+| TFC_AWS_RUN_ROLE_ARN | The arn of the AWS role arn to authenticate against | Optional if TFC_AWS_PLAN_ROLE_ARN and TFC_AWS_APPLY_ROLE_ARN are both provided. |
+
+
+#### Optional Environment Variables
+
+You may need to set these variables, depending on your use case.
+
+| Variable | Value | Notes |
+| ---------| ----- | ----- |
+| TFC_AWS_WORKLOAD_IDENTITY_AUDIENCE | Will be used as the aud claim for the identity token. Defaults to aws.workload.identity. | |
+| TFC_AWS_PLAN_ROLE_ARN | The AWS role arn to use for the plan phase of a run. | Will fall back to the value of TFC_AWS_RUN_ROLE_ARN if not provided. |
+| TFC_AWS_APPLY_ROLE_ARN | The AWS role arn to use for the apply phase of a run. | Will fall back to the value of TFC_AWS_RUN_ROLE_ARN if not provided |
+
+???
+<!--
+### Configure the AWS Provider
+< font size= 4>
+Make sure that you’re passing a value for the `region` argument into the provider configuration block or setting the `AWS_REGION` variable in your workspace.
+
+Make sure that you’re not using any of the other arguments or methods mentioned in the [authentication and configuration] (https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration)  section of the provider documentation as these settings may interfere with dynamic provider credentials.
+ -->
 ---
-### Configure Dynamic Credentials
-<font size=4>
-
-Using dynamic credentials in a workspace requires the following steps for each cloud platform:
-
-1. **Set up a Trust Relationship**: You must configure a relationship between Terraform Cloud and the AWS cloud platform. 
-
-2. **Configure Cloud Platform Access**: You must configure roles and policies for the cloud platform to define the workspace’s access to infrastructure resources.
-
-3. **Configure Terraform Cloud Workspace**: You must add specific environment variables to your workspace to tell Terraform Cloud how to authenticate to the other cloud platform during plans and applies.
-
-- [Amazon Web Services](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/aws-configuration)
-
----
-
